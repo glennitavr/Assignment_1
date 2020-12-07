@@ -1,4 +1,4 @@
-def CONTAINER_NAME="Assignment1-pipeline"
+def CONTAINER_NAME="assignment1-pipeline"
 def CONTAINER_TAG="latest"
 def DOCKER_HUB_USER="glennita"
 def HTTP_PORT="8080"
