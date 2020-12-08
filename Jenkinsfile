@@ -2,7 +2,7 @@ def CONTAINER_NAME="assignment1-pipeline"
 def CONTAINER_TAG="latest"
 def DOCKER_HUB_USER="glennitavr"
 def HOST_PORT="8081"
-def CONTAINER_PORT="8085"
+def CONTAINER_PORT="80"
 
 node {
 

@@ -28,8 +28,8 @@ ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 
-#docker to use port 8085
-EXPOSE 8085
+#docker to use port 80
+EXPOSE 80
 
 #command to execute when docker image is run
 CMD ["/usr/sbin/apache2", "-D",  "FOREGROUND"]
