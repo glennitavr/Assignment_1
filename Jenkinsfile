@@ -1,7 +1,8 @@
 def CONTAINER_NAME="assignment1-pipeline"
 def CONTAINER_TAG="latest"
 def DOCKER_HUB_USER="glennitavr"
-def HTTP_PORT="8080"
+def HOST_PORT="8081"
+def CONTAINER_PORT="8085"
 
 node {
 
@@ -29,7 +30,7 @@ node {
     }
 
     stage('Run App'){
-        runApp(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, HTTP_PORT)
+        runApp(CONTAINER_NAME, CONTAINER_TAG, DOCKER_HUB_USER, HOST_PORT, CONTAINER_PORT)
     }
 
 }
@@ -53,8 +54,8 @@ def pushToImage(containerName, tag, dockerUser, dockerPassword){
     echo "Image push complete"
 }
 
-def runApp(containerName, tag, dockerHubUser, httpPort){
+def runApp(containerName, tag, dockerHubUser, hostPort, containerPort){
     sh "docker pull $dockerHubUser/$containerName"
-    sh "docker run -d --rm -p $httpPort:$httpPort --name $containerName $dockerHubUser/$containerName:$tag"
-    echo "Application started on port: ${httpPort} (http)"
+    sh "docker run -d --rm -p $hostPort:$containerPort --name $containerName $dockerHubUser/$containerName:$tag"
+    echo "Application started on port: ${hostPort} (http)"
 }
